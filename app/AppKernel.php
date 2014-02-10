@@ -25,7 +25,11 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
-
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new Igg\ApiBundle\IggApiBundle(),
+            new Igg\GuiaBundle\IggGuiaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

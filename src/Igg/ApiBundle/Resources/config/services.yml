@@ -1,0 +1,7 @@
+parameters:
+#    igg_api.example.class: Igg\ApiBundle\Example
+
+services:
+#    igg_api.example:
+#        class: %igg_api.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

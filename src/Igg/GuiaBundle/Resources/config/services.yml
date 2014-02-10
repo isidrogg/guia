@@ -1,0 +1,7 @@
+parameters:
+#    igg_guia.example.class: Igg\GuiaBundle\Example
+
+services:
+#    igg_guia.example:
+#        class: %igg_guia.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

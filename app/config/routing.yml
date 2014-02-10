@@ -1,3 +1,11 @@
+igg_guia:
+    resource: "@IggGuiaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+igg_api:
+    resource: "@IggApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 igg_user:
     resource: "@IggUserBundle/Resources/config/routing.yml"
     prefix:   /

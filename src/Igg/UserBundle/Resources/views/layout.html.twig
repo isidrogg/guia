@@ -1,0 +1,63 @@
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{'Control.Title'|trans|capitalize}}</title>
+
+    <!-- Add custom CSS here -->
+    {% block stylesheets %}
+        {% stylesheets
+            '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+            '@IggGuiaBundle/Resources/public/css/bootstrap-yeti.css'
+        %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />      
+        {% endstylesheets %}
+    {% endblock %}
+    
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+     <div id="page-wrapper">
+        {% block fos_user_content %}
+
+        {% endblock %}
+      </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+
+    {# Overwrite this block to add your own js here, to get them  #}
+    {% javascripts 'app/Resources/js/jquery.js' %}
+      <script type="text/javascript" src="{{ asset_url }}"></script>    
+    {% endjavascripts %}
+
+    {% javascripts
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/tooltip.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/affix.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/alert.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/button.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/carousel.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/collapse.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/dropdown.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/modal.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/popover.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/scrollspy.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/tab.js'
+        '@MopaBootstrapBundle/Resources/public/bootstrap/js/transition.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+   
+
+  </body>
+</html>

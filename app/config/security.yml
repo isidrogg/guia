@@ -12,16 +12,49 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
+        wsse_secured:
+            pattern:   ^/api
+            wsse:      { nonce_dir: null, lifetime: 30000, realm: "Secured API", profile: "UsernameToken" }
+        dev:
+            pattern:    ^/(_profiler|_wdt|css|js)
+            security:   false
         main:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-            logout:       true
+            logout:       
+                path: fos_user_security_logout
+                target: /login
+                invalidate_session: false
             anonymous:    true
+
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/*, role: ROLE_ADMIN }
+
+jms_security_extra:
+    # Whether you want to secure all services (true), or only secure specific
+    # services (false); see also below
+    secure_all_services: false
+
+    # Enabling this setting will add an additional special attribute "ROLE_IDDQD".
+    # Anybody with this attribute will effectively bypass all security checks.
+    enable_iddqd_attribute: false
+
+    # Enables expression language
+    expressions: true
+
+    # Allows you to disable some, or all built-in voters
+    voters:
+        disable_authenticated: false
+        disable_role:          false
+        disable_acl:           false
+
+    # Allows you to specify access control rules for specific methods, such
+    # as controller actions
+    method_access_control:  {}
